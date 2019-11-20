@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-let blogSchema = mongoose.Schema({
+let foundDogSchema = mongoose.Schema({
     breed : {type : String, required : true},
     picture : {type : String},
     color : {type : String},
@@ -9,40 +9,40 @@ let blogSchema = mongoose.Schema({
     comments : {type : String}
 });
 
-let Blog = mongoose.model('Found-dog', blogSchema);
+let FoundDog = mongoose.model('FoundDog', foundDogSchema);
 
 let BlogList = {
     get : function(){
-		return Blog.find()
-				.then( blogs => {
-					return blogs;
+		return FoundDog.find()
+				.then( foundDogs => {
+					return foundDogs;
 				})
 				.catch( error => {
 					throw Error( error );
 				});
 	},
-    post : function(newBlog){
-        return Blog.create(newBlog)
-                .then( blog => {
-                    return blog;
+    post : function(newFoundDog){
+        return FoundDog.create(newFoundDog)
+                .then( foundDog => {
+                    return foundDog;
                 })
                 .catch( err=> {
                     throw Error(err);   
                 });
     },
     put : function(filer, updatedInfo){
-        return Blog.updateOne(filer, updatedInfo)
-                .then( blog => {
-                    return blog;
+        return FoundDog.updateOne(filer, updatedInfo)
+                .then( foundDog => {
+                    return foundDog;
                 })
                 .catch( err=> {
                     throw Error(err);   
                 });
     },
     delete :  function(filter){
-        return Blog.deleteOne(filter)
-            .then( blog => {
-                return blog;
+        return FoundDog.deleteOne(filter)
+            .then( foundDog => {
+                return foundDog;
             })
             .catch( err=> {
                 throw Error(err);   
