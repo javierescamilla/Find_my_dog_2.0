@@ -2,11 +2,11 @@ let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 let blogSchema = mongoose.Schema({
-    id : {type : String, required : true},
-    title : {type : String},
-    content : {type : String},
-    author : {type : String},
-    publishDate : {type : String}
+    breed : {type : String, required : true},
+    picture : {type : String},
+    color : {type : String},
+    foundOn : {type : String},
+    comments : {type : String}
 });
 
 let Blog = mongoose.model('Blog', blogSchema);
