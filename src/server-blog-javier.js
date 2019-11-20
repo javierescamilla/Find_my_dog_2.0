@@ -22,8 +22,8 @@ app.use(function(req, res, next) {
 
 app.get( '/blog-posts', ( req, res, next ) => {
 	BlogList.get()
-		.then( blogs => {
-			return res.status( 200 ).json( blogs );
+		.then( foundDogs => {
+			return res.status( 200 ).json( foundDogs );
 		})
 		.catch( error => {
 			res.statusMessage = "Something went wrong with the DB. Try again later.";
