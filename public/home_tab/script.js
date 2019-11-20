@@ -1,4 +1,5 @@
 function showFoundDogs(){
+	console.log("Working until here")
 	fetch('/blog-posts')
 		.then( response => {
 
