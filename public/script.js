@@ -1,5 +1,4 @@
 function showFoundDogs(){
-	console.log("Working until here")
 	fetch('/blog-posts')
 		.then( response => {
 
@@ -10,7 +9,8 @@ function showFoundDogs(){
 		})
 		.then( responseJSON => {          
 			for ( let i = 0; i < responseJSON.length; i ++ ){
-                $('.Found_dogs_section').find('ul')
+				$('.Found_dogs_section').find('ul')
+				    console.log(responseJSON[i])
                     .append(`<b>${responseJSON[i].breed}</b>`)
 			}
 		})

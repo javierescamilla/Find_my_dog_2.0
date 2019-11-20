@@ -10,7 +10,7 @@ let blogSchema = mongoose.Schema({
 });
 
 let Blog = mongoose.model('FoundDog', blogSchema);
-//console.log(Blog)
+
 let BlogList = {
     get : function(){
 		return Blog.find()
