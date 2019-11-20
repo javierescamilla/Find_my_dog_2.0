@@ -9,7 +9,7 @@ let blogSchema = mongoose.Schema({
     comments : {type : String}
 });
 
-let Blog = mongoose.model('FoundDog', blogSchema);
+let Blog = mongoose.model('Found-dog', blogSchema);
 
 let BlogList = {
     get : function(){
