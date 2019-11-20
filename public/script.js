@@ -7,10 +7,10 @@ function showFoundDogs(){
 			}
 			throw new Error ( response.statusText );
 		})
-		.then( responseJSON => {          
+		.then( responseJSON => {   
+			console.log(responseJSON)       
 			for ( let i = 0; i < responseJSON.length; i ++ ){
 				$('.Found_dogs_section').find('ul')
-				    console.log(responseJSON[i])
                     .append(`<b>${responseJSON[i].breed}</b>`)
 			}
 		})
