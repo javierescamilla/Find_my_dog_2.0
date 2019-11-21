@@ -16,20 +16,20 @@ function showLostDogs(){
 		})
 		.then( responseJSON => {
             //lengthLostDog = responseJSON.length;
-            $('#imagePreviewLost>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexFoundDog].image);
+            $('#imagePreviewLost>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexLostDog].image);
             $('#imagePreviewLost>.imagePreviewText').css('display','none');
             $('#imagePreviewLost>.imagePreviewPhoto').css('display','block');  
-            $('#nameDogPostFeed').append(`${responseJSON[indexFoundDog].name}`);
-            $('#breedDogPostFeed').append(`${responseJSON[indexFoundDog].breed}`);
-            $('#colorDogPostFeed').append(`${responseJSON[indexFoundDog].color}`);
-            $('#dateDogPostFeed').append(`${responseJSON[indexFoundDog].date}`);
-            $('#rewardDogPostFeed').append(`${responseJSON[indexFoundDog].reward}`);
-            $('#commentsDogPostFeed').append(`${responseJSON[indexFoundDog].comments}`);
-            $('#addrDogPostFeed').append(`${responseJSON[indexFoundDog].address}`);
-            $('#postalCodeDogPostFeed').append(`${responseJSON[indexFoundDog].zipCode}`);
-            $('#cityDogPostFeed').append(`${responseJSON[indexFoundDog].city}`);
-            $('#stateDogPostFeed').append(`${responseJSON[indexFoundDog].state}`);
-            $('#countryDogPostFeed').append(`${responseJSON[indexFoundDog].country}`);
+            $('#nameDogLostFeed').append(`${responseJSON[indexLostDog].name}`);
+            $('#breedDogLostFeed').append(`${responseJSON[indexLostDog].breed}`);
+            $('#colorDogLostFeed').append(`${responseJSON[indexLostDog].color}`);
+            $('#dateDogLostFeed').append(`${responseJSON[indexLostDog].date}`);
+            $('#rewardDogLostFeed').append(`${responseJSON[indexLostDog].reward}`);
+            $('#commentsDogLostFeed').append(`${responseJSON[indexLostDog].comments}`);
+            $('#addrDogLostFeed').append(`${responseJSON[indexLostDog].address}`);
+            $('#postalCodeDogLostFeed').append(`${responseJSON[indexLostDog].zipCode}`);
+            $('#cityDogLostFeed').append(`${responseJSON[indexLostDog].city}`);
+            $('#stateDogLostFeed').append(`${responseJSON[indexLostDog].state}`);
+            $('#countryDogLostFeed').append(`${responseJSON[indexLostDog].country}`);
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -51,15 +51,15 @@ function showFoundDogs(){
             $('#imagePreviewFound>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexFoundDog].image);
             $('#imagePreviewFound>.imagePreviewText').css('display','none');
             $('#imagePreviewFound>.imagePreviewPhoto').css('display','block');
-            $('#breedDogPostFeed').append(`${responseJSON[indexFoundDog].breed}`);
-            $('#colorDogPostFeed').append(`${responseJSON[indexFoundDog].color}`);
-            $('#dateDogPostFeed').append(`${responseJSON[indexFoundDog].date}`);
-            $('#commentsDogPostFeed').append(`${responseJSON[indexFoundDog].comments}`);
-            $('#addrDogPostFeed').append(`${responseJSON[indexFoundDog].address}`);
-            $('#postalCodeDogPostFeed').append(`${responseJSON[indexFoundDog].zipCode}`);
-            $('#cityDogPostFeed').append(`${responseJSON[indexFoundDog].city}`);
-            $('#stateDogPostFeed').append(`${responseJSON[indexFoundDog].state}`);
-            $('#countryDogPostFeed').append(`${responseJSON[indexFoundDog].country}`);
+            $('#breedDogFoundFeed').append(`${responseJSON[indexFoundDog].breed}`);
+            $('#colorDogFoundFeed').append(`${responseJSON[indexFoundDog].color}`);
+            $('#dateDogFoundFeed').append(`${responseJSON[indexFoundDog].date}`);
+            $('#commentsDogFoundFeed').append(`${responseJSON[indexFoundDog].comments}`);
+            $('#addrDogFoundFeed').append(`${responseJSON[indexFoundDog].address}`);
+            $('#postalCodeDogFoundFeed').append(`${responseJSON[indexFoundDog].zipCode}`);
+            $('#cityDogFoundFeed').append(`${responseJSON[indexFoundDog].city}`);
+            $('#stateDogFoundFeed').append(`${responseJSON[indexFoundDog].state}`);
+            $('#countryDogFoundFeed').append(`${responseJSON[indexFoundDog].country}`);
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -77,18 +77,18 @@ function showSeenDogs(){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {   
-            $('#imagePreviewSeen>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexFoundDog].image);
+            $('#imagePreviewSeen>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexSeenDog].image);
             $('#imagePreviewSeen>.imagePreviewText').css('display','none');
             $('#imagePreviewSeen>.imagePreviewPhoto').css('display','block');
-            $('#breedDogPostFeed').append(`${responseJSON[indexFoundDog].breed}`);
-            $('#colorDogPostFeed').append(`${responseJSON[indexFoundDog].color}`);
-            $('#dateDogPostFeed').append(`${responseJSON[indexFoundDog].date}`);
-            $('#commentsDogPostFeed').append(`${responseJSON[indexFoundDog].comments}`);
-            $('#addrDogPostFeed').append(`${responseJSON[indexFoundDog].address}`);
-            $('#postalCodeDogPostFeed').append(`${responseJSON[indexFoundDog].zipCode}`);
-            $('#cityDogPostFeed').append(`${responseJSON[indexFoundDog].city}`);
-            $('#stateDogPostFeed').append(`${responseJSON[indexFoundDog].state}`);
-            $('#countryDogPostFeed').append(`${responseJSON[indexFoundDog].country}`);
+            $('#breedDogSeenFeed').append(`${responseJSON[indexSeenDog].breed}`);
+            $('#colorDogSeenFeed').append(`${responseJSON[indexSeenDog].color}`);
+            $('#dateDogSeenFeed').append(`${responseJSON[indexSeenDog].date}`);
+            $('#commentsDogSeenFeed').append(`${responseJSON[indexSeenDog].comments}`);
+            $('#addrDogSeenFeed').append(`${responseJSON[indexSeenDog].address}`);
+            $('#postalCodeDogSeenFeed').append(`${responseJSON[indexSeenDog].zipCode}`);
+            $('#cityDogSeenFeed').append(`${responseJSON[indexSeenDog].city}`);
+            $('#stateDogSeenFeed').append(`${responseJSON[indexSeenDog].state}`);
+            $('#countryDogSeenFeed').append(`${responseJSON[indexSeenDog].country}`);
 		})
 		.catch( err => {
             console.log("Internal error")
