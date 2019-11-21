@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 
 app.get( '/found-dogs/:id', ( req, res, next ) => {
     let id = req.params.id;
-    if (!id){
+    if (id = 'noFilter'){
         FoundDogList.get()
 		.then( foundDogs => {
 			return res.status( 200 ).json( foundDogs );
@@ -44,7 +44,7 @@ app.get( '/found-dogs/:id', ( req, res, next ) => {
 
 app.get( '/lost-dogs/:id', ( req, res, next ) => {
     let id = req.params.id;
-    if(!id){
+    if(id = 'noFilter'){
         LostDogList.get()
 		.then( lostDogs => {
 			return res.status( 200 ).json( lostDogs );
@@ -64,7 +64,7 @@ app.get( '/lost-dogs/:id', ( req, res, next ) => {
 
 app.get( '/seen-dogs/:id', ( req, res, next ) => {
     let id = req.params.id;
-    if(!id){
+    if(id = 'noFilter'){
         SeenDogList.get()
 		.then( seenDogs => {
 			return res.status( 200 ).json( seenDogs );

@@ -6,7 +6,8 @@ var lengthFoundDog;
 var lengthSeenDog;
 
 function showLostDogs(){
-	fetch('/lost-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/lost-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
@@ -38,7 +39,8 @@ function showLostDogs(){
 }
 
 function showFoundDogs(){
-	fetch('/found-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/found-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
@@ -68,7 +70,8 @@ function showFoundDogs(){
 }
 
 function showSeenDogs(){
-	fetch('/seen-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/seen-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
