@@ -22,8 +22,14 @@ function validateUser(userId, typedPassword){
             if(user.password == typedPassword){
                 console.log('Correct password')
             }
+            else{
+                $('#userNameLogin').parent().prepend('<div>Wrong password or username. Try again.');
+                $('#userNameLogin').parent().child().css('color','red');
+            }
 		})
 		.catch( err => {
+            $('#userNameLogin').parent().prepend('<div>Wrong password or username. Try again.');
+            $('#userNameLogin').parent().child().css('color','red');
             console.log("Internal error")
 			console.log( err );
         });
