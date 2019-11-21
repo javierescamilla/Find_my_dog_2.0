@@ -231,7 +231,8 @@ function uploadPost(){
             addr = $('#route').val();
         }
         if(option == 'lost'){
-            console.log("Entrando Lost")
+            console.log("Entrando Lost");
+            console.log(base64Img)
             data = {
                 image: base64Img,
                 name: $('#nameDogForm').val(),
