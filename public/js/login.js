@@ -18,4 +18,4 @@ function getUser(userId){
 }
 
 let user = getUser('javierescamilla')
-console.log(user.password)
+console.log(user[0].password)
