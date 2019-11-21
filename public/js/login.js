@@ -23,13 +23,15 @@ function validateUser(userId, typedPassword){
                 console.log('Correct password')
             }
             else{
-                $('#userNameLogin').parent().prepend('<div>Wrong password or username. Try again.');
-                $('#userNameLogin').parent().child().css('color','red');
+                $('#errorMessageLogin').html('');
+                $('#errorMessageLogin').html('Wrong password or username. Try again.');
+                $('#errorMessageLogin').css('color','red');
             }
 		})
 		.catch( err => {
-            $('#userNameLogin').parent().prepend('<div>Wrong password or username. Try again.');
-            $('#userNameLogin').parent().find('div').css('color','red');
+            $('#errorMessageLogin').html('');
+            $('#errorMessageLogin').html('Wrong password or username. Try again.');
+            $('#errorMessageLogin').css('color','red');
             console.log("Internal error")
 			console.log( err );
         });
