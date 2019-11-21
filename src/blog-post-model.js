@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-let blogSchema = mongoose.Schema({
+let foundDogSchema = mongoose.Schema({
     breed : {type : String, required : true},
     picture : {type : String},
     color : {type : String},
@@ -9,11 +9,11 @@ let blogSchema = mongoose.Schema({
     comments : {type : String}
 });
 
-let Blog = mongoose.model('Found-dog', blogSchema);
+let FoundDog = mongoose.model('Found-dog', foundDogSchema);
 
-let BlogList = {
+let FoundDogList = {
     get : function(){
-		return Blog.find()
+		return FoundDog.find()
 				.then( blogs => {
 					return blogs;
 				})
@@ -22,7 +22,7 @@ let BlogList = {
 				});
 	},
     post : function(newBlog){
-        return Blog.create(newBlog)
+        return FoundDog.create(newBlog)
                 .then( blog => {
                     return blog;
                 })
@@ -31,7 +31,7 @@ let BlogList = {
                 });
     },
     put : function(filer, updatedInfo){
-        return Blog.updateOne(filer, updatedInfo)
+        return FoundDog.updateOne(filer, updatedInfo)
                 .then( blog => {
                     return blog;
                 })
@@ -40,7 +40,7 @@ let BlogList = {
                 });
     },
     delete :  function(filter){
-        return Blog.deleteOne(filter)
+        return FoundDog.deleteOne(filter)
             .then( blog => {
                 return blog;
             })
@@ -50,4 +50,4 @@ let BlogList = {
     }
 }
 
-module.exports = { BlogList };
+module.exports = { FoundDogList };
