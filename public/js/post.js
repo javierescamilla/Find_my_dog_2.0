@@ -230,21 +230,34 @@ function uploadPost(){
             addr = $('#route').val();
         }
         if(option == 'lost'){
+            // data = {
+            //     image: base64Img,
+            //     name: $('#nameDogForm').val(),
+            //     breed: $('#breedDogForm').val(),
+            //     color: $('#colorDogForm').val(),
+            //     date: new Date($('#timeOfInteraction').val()),
+            //     reward: $('#rewardDogForm').val(),
+            //     comments: $('#commentsDogForm').val(),
+            //     address: addr,
+            //     zipCode: $('#postal_code').val(),
+            //     city: $('#locality').val(),
+            //     state: $('#administrative_area_level_1').val(),
+            //     country: $('#country').val()
+            // }
             data = {
-                image: base64Img,
-                name: $('#nameDogForm').val(),
-                breed: $('#breedDogForm').val(),
-                color: $('#colorDogForm').val(),
-                date: new Date($('#timeOfInteraction').val()),
-                reward: $('#rewardDogForm').val(),
-                comments: $('#commentsDogForm').val(),
-                address: addr,
-                zipCode: $('#postal_code').val(),
-                city: $('#locality').val(),
-                state: $('#administrative_area_level_1').val(),
-                country: $('#country').val()
+                image: "String",
+                name: "String",
+                breed: "String",
+                color: "String",
+                date: "String",
+                reward: "String",
+                comments: "String",
+                address: "String",
+                zipCode: "String",
+                city: "String",
+                state: "String",
+                country: "String"
             }
-            console.log(data)
             fetch('/lost-dogs', {
                 headers: {
                     'Accept': 'application/json',
@@ -254,9 +267,13 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                window.location.replace("../index.html")
+                //window.location.replace("../index.html")
                 return response.json();
             })
+            .catch( err => {
+                console.log("Internal error")
+                console.log( err );
+            });
             /*$.ajax({
                 url: "urlLost",
                 data:{
