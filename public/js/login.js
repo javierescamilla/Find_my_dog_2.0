@@ -41,9 +41,8 @@ function validateUser(userId, typedPassword){
             user = responseJSON
             console.log(user.password)
             if(user.password == typedPassword){
-                username = user.username;
                 console.log(username);
-                qString = "../index.html?usr="+username;
+                qString = "../index.html?usr="+user.username;
                 window.location.href = qString;
             }
             else{
