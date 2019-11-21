@@ -270,6 +270,7 @@ function uploadPost(){
             })
             .then(function(response) {
                 //window.location.replace("../index.html")
+                console.log(response.json())
                 return response.json();
             })
             .catch( err => {
