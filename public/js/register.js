@@ -95,7 +95,7 @@ function createNewUser(){
             console.log( err );
           });
           console.log(data);
-          window.location.replace("index.html");
+          window.location.replace("register.html");
         }
       }
     }
