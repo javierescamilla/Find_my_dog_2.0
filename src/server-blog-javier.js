@@ -89,7 +89,6 @@ app.post('/found-dogs', jsonParser, (req, res, next) => {
         breed: breed,
         color: color,
         date: date,
-        reward: reward,
         comments: comments,
         address: address,
         zipCode: zipCode,
@@ -117,6 +116,7 @@ app.post('/lost-dogs', jsonParser, (req, res, next) => {
     let breed = req.body.breed;
     let color = req.body.color;
     let date = req.body.date;
+    let reward = req.body.reward;
     let comments = req.body.comments;
     let address = req.body.address;
     let zipCode = req.body.zipCode;
