@@ -145,7 +145,7 @@ function getNewPosts(){
     $('#lostDogNext').on('click', function(event){
         console.log('lostDogNext')
         event.preventDefault();
-        if(indexLostDog < lengthLostDog){
+        if(indexLostDog < lengthLostDog - 1){
             indexLostDog++;
             showLostDogs();
         }
@@ -163,7 +163,7 @@ function getNewPosts(){
     $('#foundDogNext').on('click', function(event){
         console.log('foundDogNext')
         event.preventDefault();
-        if(indexFoundDog < lengthFoundDog){
+        if(indexFoundDog < lengthFoundDog - 1){
             indexFoundDog++;
             showFoundDogs();
         }
@@ -178,7 +178,7 @@ function getNewPosts(){
     });
     $('#seenDogNext').on('click', function(event){
         event.preventDefault();
-        if(indexSeenDog < lengthSeenDog){
+        if(indexSeenDog < lengthSeenDog - 1){
             indexSeenDog++;
             showSeenDogs();
         }
