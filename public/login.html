@@ -2,7 +2,7 @@
 <html lang="eng">
 <head>
     <meta charset="utf-8"/>
-    <title>Dog Finder Home</title>
+    <title>Dog Finder Login</title>
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 </head>
 <body>
@@ -20,36 +20,20 @@
         </div>
     </header>
     <main>
-        <section class='dogPostFeed' id='lostDogs'>
-            <h2>Have you seen me?</h2>
+        <form id='loginForm'>
             <div>
-                <button type='reset' class='scrollButton' id='lostDogBack'>&#60</button>
-                <div class = "Lost_dog_section">
-                    <ul></ul>
-                </div>
-                <button type='submit' class='scrollButton' id='lostDogNext'>></button>
+                <label for='userNameLogin'><h4>Username or email</h4></label>
             </div>
-        </section>
-        <section class='dogPostFeed' id='foundDogs'>
-            <h2>Are you looking for me?</h2>
+            <input type='text' id='userNameLogin' class='loginInput'>
             <div>
-                <button type='reset' class='scrollButton' id='foundDogBack'>&#60</button>
-                <div class = "Found_dogs_section">
-                    <ul></ul>
-                </div>
-                <button type='submit' class='scrollButton' id='foundDogNext'>></button>
+                <label for='passwordLogin'><h4>Password</h4></label>
             </div>
-        </section>
-        <section class='dogPostFeed' id='seenDogs'>
-            <h2>I have been spotted!</h2>
+            <input type='password' id = 'passwordLogin' class='loginInput'>
             <div>
-                <button type='reset' class='scrollButton' id='lostDogBack'>&#60</button>
-                <div class = "Seen_dog_section">
-                    <ul></ul>
-                </div>    
-                <button type='submit' class='scrollButton' id='lostDogNext'>></button>
+                <a href="register.html">Register</a>
+                <button type='submit' class='submitButton' id='loginSubmit'>Login</button>
             </div>
-            </section>
+        </form>
     </main>
     <footer>
         <p>This is an early alfa version of the application.</p> 

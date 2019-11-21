@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="eng">
+<head>
+    <meta charset="utf-8"/>
+    <title>Dog Finder Register</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+<body>
+    <header>
+        <h2 class='banner'>FIND MY DOG</h2>
+        <div class='navBar'>
+            <span class='navMenuSpan'>
+                <button class='menuButton' id='index'><h3>Home</h3></button>
+                <button class='menuButton' id='about'><h3>About Us</h3></button>
+                <button class='menuButton' id='post'><h3>Post</h3></button>
+            </span>
+            <span class='loginSpan'>
+                <button class='menuButton' id='login'><h3>Login</h3></button>
+            </span>
+        </div>
+    </header>
+    <main>
+        <section id='registrationSection'>
+            <form id='registerForm'>
+                <h2>Registration</h2>
+                <p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
+                <table>
+                    <tbody id='credentialsTableBody'> 
+                        <tr>       
+                            <td><label for='firstNameReg'><h4>First name*</h4></label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='text' id='firstNameReg' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td><label for='lastNameReg'><h4>Last name*</h4></label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='text' id='lastNameReg' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td><label for='emailReg'><h4>Email*</h4></label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='email' id='emailReg' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td><label for='userNameReg'>
+                                <h4>Username*</h4>
+                                <p class="labelInfo">Username muss contain:</p>
+                                <ul class="labelInfo">
+                                    <li>At least 3 characters</li>
+                                    <li>Can't have spaces or special characters</li>
+                                </ul>
+                            </label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='text' id='userNameReg' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td><label for='passwordReg'>
+                                <h4>Password*</h4>
+                                <p class="labelInfo">Password muss contain:</p>
+                                <ul class="labelInfo">
+                                    <li>At least 8 characters</li>
+                                    <li>At least 1 uppercase letter</li>
+                                    <li>At least 1 lowercase letter</li>
+                                    <li>At least a number</li>
+                                </ul>
+                            </label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='password' id = 'passwordReg' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td><label for='passwordConfReg'><h4>Password Confirmation*</h4></label></td>
+                        </tr>
+                        <tr>
+                            <td><input type='password' id = 'passwordConfReg' class='regInput' required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tbody id='#addressTableBody'>
+                        <tr>
+                            <td colspan='4'><input type='search' id='searchInputReg' placeholder="Search address" class='regInput'></td>
+                        </tr>
+                        <tr>
+                            <td class='labelColumn'><label for='street_number'><h4>No.</h4></label></td>
+                            <td class='numberColumn'><input type='text' id='street_number' class='regInput'></td> 
+                            <td class='labelColumn'><label for='route'><h4>Address</h4></label></td>
+                            <td class='stringColum'><input type='text' id='route' class='regInput'></td>
+                        </tr>
+                        <tr>
+                            <td class='labelColumn'><label for='postal_code'><h4>Zip Code</h4></label></td>
+                            <td class='numberColumn'><input type='text' id='postal_code' class='regInput'></td>
+                            <td class='labelColumn'><label for='locality'><h4>City*</h4></label></td>
+                            <td class='stringColum'><input type='text' id='locality' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td class='labelColumn'><label for='administrative_area_level_1'><h4>State*</h4></label>
+                            <td colspan='3'><input type='text' id='administrative_area_level_1' class='regInput' required></td>
+                        </tr>
+                        <tr>
+                            <td class='labelColumn'><label for='country'><h4>Country*</h4></label></td>
+                            <td colspan='3'><input type='text' id='country' class='regInput' required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div>
+                    <button type='submit' class='submitButton' id='regSubmit'>Register</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>This is an early alfa version of the application.</p> 
+        <p>There may be some incomplete functions or they may not function correctly.</p>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuvQ0iqFr72LJQ2elGfmevRucSsKukCSU&libraries=places"></script>
+    <script src = "./js/register.js" type = "text/javascript"></script>
+    <script src = "./js/menu.js" type = "text/javascript"></script>
+</body>
+</html>

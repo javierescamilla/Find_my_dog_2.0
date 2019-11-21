@@ -1,0 +1,335 @@
+*{
+    box-sizing: border-box;
+}
+
+h2{
+    margin: 20px 6% 20px 6%;
+    color: rgb(148, 147, 70);    
+}
+
+p{
+    margin: 20px 6% 20px 6%;   
+}
+
+h4{
+    margin: 5px 0 5px 0;
+    color: rgb(148, 147, 70);    
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+}
+
+header{
+    width: 100%;
+    padding: 1px 0 0 0;
+    margin: 0;
+    background-color: #46433E;
+}
+
+header>h2{
+    margin: 14px 0 15px 8px;
+    color: white;
+}
+
+/*
+#888094;
+#D5CBD9;
+#835f51;
+#E7D7D0;
+#342A4C;
+#46433E;
+#96ABB0;
+#807F3C;
+#D7E0E7;
+#B36B39;
+*/
+
+.navBar{ 
+    display: flex;
+    background-color: rgb(94, 90, 84);
+}
+
+.navMenuSpan{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-decoration: none;
+}
+
+.loginSpan{
+    width: 30%;
+    display : flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+}
+
+.scrollButton:hover{
+    color: rgb(189, 151, 135);
+}
+
+.menuButton{
+    margin: 3px 7px 0 10px;
+    padding: 0 0 0 0;
+    border: none;
+    color: rgb(148, 147, 70);
+    background-color: rgb(94, 90, 84);
+    border-block-end: 3px solid;
+    border-block-end-color: rgb(94, 90, 84);
+}
+
+.menuButton:hover{
+    color: white;
+    border-block-end-color: white;
+}
+
+.menuButton>h3{
+    margin: 2px 0 2px 0;
+}
+
+main{
+    width: 80%;
+    background-color: white;
+}
+
+.dogPostFeed{
+    display: flex;
+    flex-direction: column;
+}
+
+.dogPostFeed>div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.scrollButton{
+    color: #888094;
+    color: #D5CBD9;
+    color: #835f51;
+    color: #E7D7D0;
+    color: #342A4C;
+    color: #46433E;
+    color: #96ABB0;
+    color: #807F3C;
+    color: #D7E0E7;
+    color: #B36B39;
+    color: #8a5d4b;
+    color: #B36B39;
+    font-size: 40px;
+    background-color: white;
+    border: none;
+    padding: 150px 10px 150px 10px;
+    margin: 10px;
+}
+
+.whoIs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.whoIs>img{
+    width: 150px;
+    margin: 0 3% 0 6%;
+}
+
+.whoIs>p{
+    margin: 20px 6% 20px 0;
+}
+
+#loginForm{
+    margin: 300px 0 300px 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm>div{
+    width: 200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#loginForm>input{
+    width: 200px;
+    margin: 0 0 10px 0;
+}
+
+#loginForm>div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitButton{
+    margin: 10px 0 10px 0;
+    padding: 5px 10px 5px 10px;
+    border: solid 1px rgb(110, 180, 192);
+    border-radius: 6px;
+    background-color: rgb(110, 180, 192);
+    color: white;
+}
+
+#registrationSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#registerForm{
+    width: 600px;
+    margin: 0 0 3vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#registerForm>p{
+    margin: 0 0 10px 0;
+    font-size: 90%;
+    color: rgb(145, 145, 145);
+}
+
+.labelInfo{
+    font-size: 90%;
+    color: rgb(145, 145, 145);
+}
+
+#searchInputReg{
+    width: 100%;
+    margin: 30px 0 20px 0;
+}
+
+#credentialsTableBody>tr>td{
+    width:300px;
+    margin: 0;
+}
+
+#registerForm>div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.regTableForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.numberColumn{
+    width: 45px;
+}
+
+.labelColumn{
+    width: 85px;
+}
+
+.stringColum{
+    width: 395px;
+}
+
+.regInput{
+    width: 100%;
+}
+
+#postDogForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#postDogForm>h2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#postDogForm>p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 10px 0;
+    font-size: 90%;
+    color: rgb(145, 145, 145);
+}
+
+#postDogForm>div>p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 10px 0;
+    font-size: 90%;
+    color: rgb(145, 145, 145);
+}
+
+#postDogForm>.hiddenForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#postDogForm>.hiddenForm>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#infoTableForm{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagePreview{
+    width: 300px;
+    min-height: 100px;
+    border: 2px solid #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.imagePreviewPhoto{
+    display: none;
+    width: 100%
+}
+
+footer{
+    width: 80%;
+    color: rgb(190, 190, 190);
+    background-color: white;
+    padding: 4% 0 3% 0;
+    font-size: 80%;
+}
+
+footer>p{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
