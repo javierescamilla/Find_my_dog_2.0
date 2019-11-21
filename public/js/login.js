@@ -1,4 +1,9 @@
-let user;
+function initSesion(){
+    $('loginForm').on('submit', function(event){
+        event.preventDefault();
+        validateUser($('#userNameLogin').val(),$('#passwordLogin').val());
+    });
+}
 function validateUser(userId, typedPassword){
     fetch('/users/' + userId)
 		.then( response => {
@@ -8,7 +13,7 @@ function validateUser(userId, typedPassword){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {  
-            console.log(typeof(JSON.stringify(responseJSON)))
+            //console.log(typeof(JSON.stringify(responseJSON)))
             user = JSON.stringify(responseJSON)
             if(user.password == typedPassword){
                 console.log('Correct password')
@@ -20,4 +25,4 @@ function validateUser(userId, typedPassword){
         });
 }
 
-validateUser('javierescamilla', 'Arduino.1997')
+initSesion();
