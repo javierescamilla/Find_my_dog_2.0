@@ -38,19 +38,6 @@ header>h2{
     color: white;
 }
 
-/*
-#888094;
-#D5CBD9;
-#835f51;
-#E7D7D0;
-#342A4C;
-#46433E;
-#96ABB0;
-#807F3C;
-#D7E0E7;
-#B36B39;
-*/
-
 .navBar{ 
     display: flex;
     background-color: rgb(94, 90, 84);
@@ -124,17 +111,6 @@ main{
 }
 
 .scrollButton{
-    color: #888094;
-    color: #D5CBD9;
-    color: #835f51;
-    color: #E7D7D0;
-    color: #342A4C;
-    color: #46433E;
-    color: #96ABB0;
-    color: #807F3C;
-    color: #D7E0E7;
-    color: #B36B39;
-    color: #8a5d4b;
     color: #B36B39;
     font-size: 40px;
     background-color: white;
@@ -337,6 +313,14 @@ main{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+#resolveDiv>h4{
+    margin: 20px 6% 20px 6%;
+}
+
+#resolveDiv>#contact{
+    margin: 20px 6% 20px 6%;
 }
 
 footer{

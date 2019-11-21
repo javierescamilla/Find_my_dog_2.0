@@ -5,6 +5,25 @@ var lengthLostDog;
 var lengthFoundDog;
 var lengthSeenDog;
 
+var username = '';
+var loggedIn = false;
+
+function getUsername(){
+    var queryString = decodeURIComponent(window.location.search);
+    if(queryString != ""){
+        username = queryString.split('=')[1];
+        if(username != ''){
+            loggedIn = true;
+        }
+        else{
+            loggedIn = false;
+        }
+    }
+    else{
+        loggedIn = false;
+    }
+}
+
 function showLostDogs(){
     let noFilter = 'noFilter' 
 	fetch('/lost-dogs/' + noFilter)
@@ -184,7 +203,46 @@ function getNewPosts(){
         }
     });
 }
+
+function resolvePost(){
+    $('#resolveLost').on('click', function(event){
+        event.preventDefault();
+        if(loggedIn){
+            var email = 'example@gmail.com'
+            let qString = "resolved.html?var="+email+"&usr="+username;
+            window.location.href = qString;
+        }
+        else{
+            alert("Please Log in to your account");
+        }
+    });
+    $('#resolveFound').on('click', function(event){
+        event.preventDefault();
+        if(loggedIn){
+            var email = 'example@gmail.com'
+            let qString = "resolved.html?var="+email+"&usr="+username;
+            window.location.href = qString;
+        }
+        else{
+            alert("Please Log in to your account");
+        }
+    });
+    $('#resolveSeen').on('click', function(event){
+        event.preventDefault();
+        if(loggedIn){
+            var email = 'example@gmail.com'
+            let qString = "resolved.html?var="+email+"&usr="+username;
+            window.location.href = qString;
+        }
+        else{
+            alert("Please Log in to your account");
+        }
+    });
+}
+
+getUsername();
 showLostDogs();
 showFoundDogs();
 showSeenDogs();
 getNewPosts();
+resolvePost();

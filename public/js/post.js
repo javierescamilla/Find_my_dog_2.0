@@ -219,6 +219,26 @@ var componentForm = {
   postal_code: 'short_name'
 };
 
+var username = '';
+var loggedIn = false;
+
+function getUsername(){
+    var queryString = decodeURIComponent(window.location.search);
+    console.log(queryString);
+    if(queryString != ""){
+        username = queryString.split('=')[1];
+        if(username != ''){
+            loggedIn = true;
+        }
+        else{
+            loggedIn = false;
+        }
+    }
+    else{
+        loggedIn = false;
+    }
+}
+
 function uploadPost(){
     console.log("Entrando POST")
     $('#postDogForm').on('submit', function(event){
@@ -254,7 +274,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                window.location.replace("../index.html")
+                window.location.replace("../index.html?usr="+username)
                 console.log(response.json())
                 return response.json();
             })
@@ -285,7 +305,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                window.location.replace("../index.html")
+                window.location.replace("../index.html?usr="+username)
                 console.log(response.json())
                 return response.json();
             })
@@ -317,7 +337,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                //window.location.replace("../index.html")
+                window.location.replace("../index.html?usr="+username)
                 console.log(response.json())
                 return response.json();
             })
@@ -332,24 +352,30 @@ function uploadPost(){
 function showFields(){
     $('input[type=radio]').change(function(){
         $('.hiddenForm').html('');
-        option = this.value;
-        if(option == 'lost'){
-            $('.hiddenForm').html(lostHtml);
-            geolocate();
-            initAutocomplete();
-            uploadPicture();
+        console.log(loggedIn);
+        if(loggedIn){    
+            option = this.value;
+            if(option == 'lost'){
+                $('.hiddenForm').html(lostHtml);
+                geolocate();
+                initAutocomplete();
+                uploadPicture();
+            }
+            else if(option == 'found'){
+                $('.hiddenForm').html(foundHtml);
+                geolocate();
+                initAutocomplete();
+                uploadPicture();
+            }
+            else if(option == 'seen'){
+                $('.hiddenForm').html(seenHtml);
+                geolocate();
+                initAutocomplete();
+                uploadPicture();
+            }
         }
-        else if(option == 'found'){
-            $('.hiddenForm').html(foundHtml);
-            geolocate();
-            initAutocomplete();
-            uploadPicture();
-        }
-        else if(option == 'seen'){
-            $('.hiddenForm').html(seenHtml);
-            geolocate();
-            initAutocomplete();
-            uploadPicture();
+        else{
+            alert("Please Log in to your account");
         }
     });
 }
@@ -423,6 +449,6 @@ function geolocate() {
     }
 }
 
+getUsername();
 showFields();
-
 uploadPost();

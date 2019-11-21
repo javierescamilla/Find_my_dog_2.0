@@ -1,3 +1,24 @@
+var username = '';
+var loggedIn = false;
+
+function getUsername(){
+    var queryString = decodeURIComponent(window.location.search);
+    if(queryString != ""){
+        username = queryString.split('=')[1];
+        if(username != ''){
+            loggedIn = true;
+        }
+        else{
+            loggedIn = false;
+        }
+    }
+    else{
+        loggedIn = false;
+    }
+}
+
+getUsername();
+
 function initSesion(){
     $('#loginForm').on('submit', function(event){
         console.log("Click button")
@@ -20,7 +41,8 @@ function validateUser(userId, typedPassword){
             user = responseJSON
             console.log(user.password)
             if(user.password == typedPassword){
-                console.log('Correct password')
+                username = user.name;
+                window.location.href = "../index.html?usr="+username;
             }
             else{
                 $('#errorMessageLogin').html('');
