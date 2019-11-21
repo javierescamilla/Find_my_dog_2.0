@@ -16,4 +16,4 @@ function getUser(userId){
 		});
 }
 
-getUser(javierescamilla)
+getUser('javierescamilla')
