@@ -7,7 +7,7 @@ let app = express();
 let bodyParser = require( "body-parser" );
 let jsonParser = bodyParser.json();
 
-let {FoundDogList} = require('./blog-post-model');
+let {FoundDogList} = require('./found-dogs-model');
 let {DATABASE_URL, PORT} = require('./config');
 mongoose.Promise = global.Promise;
 
