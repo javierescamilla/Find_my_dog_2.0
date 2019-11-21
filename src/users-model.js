@@ -17,7 +17,7 @@ let userSchema = mongoose.Schema({
 let Uservar = mongoose.model('User', userSchema);
 
 let UserList = {
-    get : function(){
+    get : function(filter){
 		return Uservar.findOne(filter)
 				.then( blog => {
 					return blog;
