@@ -6,7 +6,8 @@ var lengthFoundDog;
 var lengthSeenDog;
 
 function showLostDogs(){
-	fetch('/lost-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/lost-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
@@ -16,18 +17,6 @@ function showLostDogs(){
 		})
 		.then( responseJSON => {
             lengthLostDog = responseJSON.length;
-            $('#nameDogLostFeed').html('<h4>Name </h4>');
-            $('#breedDogLostFeed').html('<h4>Breed </h4>');
-            $('#colorDogLostFeed').html('<h4>Color </h4>');
-            $('#dateDogLostFeed').html('<h4>Date </h4>');
-            $('#rewardDogLostFeed').html('<h4>Reward </h4>');
-            $('#commentsDogLostFeed').html('<h4>Comments </h4>');
-            $('#addrDogLostFeed').html('');
-            $('#postalCodeDogLostFeed').html('');
-            $('#cityDogLostFeed').html('');
-            $('#stateDogLostFeed').html('');
-            $('#countryDogLostFeed').html('');
-
             $('#imagePreviewLost>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexLostDog].image);
             $('#imagePreviewLost>.imagePreviewText').css('display','none');
             $('#imagePreviewLost>.imagePreviewPhoto').css('display','block');  
@@ -44,15 +33,14 @@ function showLostDogs(){
             $('#countryDogLostFeed').append(`${responseJSON[indexLostDog].country}`);
 		})
 		.catch( err => {
-            $('#imagePreviewFound>.imagePreviewText').css('display','flex');
-            $('#imagePreviewFound>.imagePreviewPhoto').css('display','none');
             console.log("Internal error")
 			console.log( err );
 		});
 }
 
 function showFoundDogs(){
-	fetch('/found-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/found-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
@@ -62,17 +50,6 @@ function showFoundDogs(){
 		})
 		.then( responseJSON => {   
             lengthFoundDog = responseJSON.length;
-            
-            $('#breedDogFoundFeed').html('<h4>Breed </h4>');
-            $('#colorDogFoundFeed').html('<h4>Color </h4>');
-            $('#dateDogFoundFeed').html('<h4>Date </h4>');
-            $('#commentsDogFoundFeed').html('<h4>Comments </h4>');
-            $('#addrDogFoundFeed').html('');
-            $('#postalCodeDogFoundFeed').html('');
-            $('#cityDogFoundFeed').html('');
-            $('#stateDogFoundFeed').html('');
-            $('#countryDogFoundFeed').html('');
-
             $('#imagePreviewFound>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexFoundDog].image);
             $('#imagePreviewFound>.imagePreviewText').css('display','none');
             $('#imagePreviewFound>.imagePreviewPhoto').css('display','block');
@@ -85,18 +62,16 @@ function showFoundDogs(){
             $('#cityDogFoundFeed').append(`${responseJSON[indexFoundDog].city}`);
             $('#stateDogFoundFeed').append(`${responseJSON[indexFoundDog].state}`);
             $('#countryDogFoundFeed').append(`${responseJSON[indexFoundDog].country}`);
-            
 		})
 		.catch( err => {
-            $('#imagePreviewFound>.imagePreviewText').css('display','flex');
-            $('#imagePreviewFound>.imagePreviewPhoto').css('display','none');
             console.log("Internal error")
 			console.log( err );
 		});
 }
 
 function showSeenDogs(){
-	fetch('/seen-dogs/')
+    let noFilter = 'noFilter' 
+	fetch('/seen-dogs/' + noFilter)
 		.then( response => {
 
 			if ( response.ok ){
@@ -106,17 +81,6 @@ function showSeenDogs(){
 		})
 		.then( responseJSON => {
             lengthSeenDog = responseJSON.length;
-            
-            $('#breedDogSeenFeed').html('<h4>Breed </h4>');
-            $('#colorDogSeenFeed').html('<h4>Color </h4>');
-            $('#dateDogSeenFeed').html('<h4>Date </h4>');
-            $('#commentsDogSeenFeed').html('<h4>Comments </h4>');
-            $('#addrDogSeenFeed').html('');
-            $('#postalCodeDogSeenFeed').html('');
-            $('#cityDogSeenFeed').html('');
-            $('#stateDogSeenFeed').html('');
-            $('#countryDogSeenFeed').html('');
-            
             $('#imagePreviewSeen>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexSeenDog].image);
             $('#imagePreviewSeen>.imagePreviewText').css('display','none');
             $('#imagePreviewSeen>.imagePreviewPhoto').css('display','block');
@@ -131,50 +95,56 @@ function showSeenDogs(){
             $('#countryDogSeenFeed').append(`${responseJSON[indexSeenDog].country}`);
 		})
 		.catch( err => {
-            $('#imagePreviewFound>.imagePreviewText').css('display','flex');
-            $('#imagePreviewFound>.imagePreviewPhoto').css('display','none');
             console.log("Internal error")
 			console.log( err );
 		});
 }
 
 function getNewPosts(){
-    $('#lostDogBack').on('reset', function(event){
+    $('#lostDogBack').on('click', function(event){
+        console.log('lostDogBack')
         event.preventDefault();
         if(indexLostDog > 0){
             indexLostDog--;
             showLostDogs();
         }
+        console.log(indexLostDog)
     });
-    $('#lostDogNext').on('submit', function(event){
+    $('#lostDogNext').on('click', function(event){
+        console.log('lostDogNext')
         event.preventDefault();
         if(indexLostDog < lengthLostDog){
             indexLostDog++;
             showLostDogs();
         }
+        console.log(indexLostDog)
     });
-    $('#foundDogBack').on('reset', function(event){
+    $('#foundDogBack').on('click', function(event){
+        console.log('foundDogBack')
         event.preventDefault();
         if(indexFoundDog > 0){
             indexFoundDog--;
             showFoundDogs();
         }
+        console.log(indexFoundDog)
     });
-    $('#foundDogNext').on('submit', function(event){
+    $('#foundDogNext').on('click', function(event){
+        console.log('foundDogNext')
         event.preventDefault();
         if(indexFoundDog < lengthFoundDog){
             indexFoundDog++;
             showFoundDogs();
         }
+        console.log(indexFoundDog)
     });
-    $('#seenDogBack').on('reset', function(event){
+    $('#seenDogBack').on('click', function(event){
         event.preventDefault();
         if(indexSeenDog > 0){
             indexSeenDog--;
             showSeenDogs();
         }
     });
-    $('#seenDogNext').on('submit', function(event){
+    $('#seenDogNext').on('click', function(event){
         event.preventDefault();
         if(indexSeenDog < lengthSeenDog){
             indexSeenDog++;
