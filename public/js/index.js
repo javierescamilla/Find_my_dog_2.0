@@ -101,7 +101,7 @@ function showSeenDogs(){
 }
 
 function getNewPosts(){
-    $('#lostDogBack').on('reset', function(event){
+    $('#lostDogBack').on('click', function(event){
         console.log('lostDogBack')
         event.preventDefault();
         if(indexLostDog > 0){
@@ -110,7 +110,7 @@ function getNewPosts(){
         }
         console.log(indexLostDog)
     });
-    $('#lostDogNext').on('submit', function(event){
+    $('#lostDogNext').on('click', function(event){
         console.log('lostDogNext')
         event.preventDefault();
         if(indexLostDog < lengthLostDog){
@@ -119,7 +119,7 @@ function getNewPosts(){
         }
         console.log(indexLostDog)
     });
-    $('#foundDogBack').on('reset', function(event){
+    $('#foundDogBack').on('click', function(event){
         console.log('foundDogBack')
         event.preventDefault();
         if(indexFoundDog > 0){
@@ -128,7 +128,7 @@ function getNewPosts(){
         }
         console.log(indexFoundDog)
     });
-    $('#foundDogNext').on('submit', function(event){
+    $('#foundDogNext').on('click', function(event){
         console.log('foundDogNext')
         event.preventDefault();
         if(indexFoundDog < lengthFoundDog){
@@ -137,14 +137,14 @@ function getNewPosts(){
         }
         console.log(indexFoundDog)
     });
-    $('#seenDogBack').on('reset', function(event){
+    $('#seenDogBack').on('click', function(event){
         event.preventDefault();
         if(indexSeenDog > 0){
             indexSeenDog--;
             showSeenDogs();
         }
     });
-    $('#seenDogNext').on('submit', function(event){
+    $('#seenDogNext').on('click', function(event){
         event.preventDefault();
         if(indexSeenDog < lengthSeenDog){
             indexSeenDog++;
