@@ -63,7 +63,7 @@ app.post('/lost-dogs', jsonParser, (req, res, next) => {
     let state = req.body.state;
     let country = req.body.country;
 
-    if(!image){
+    if(image){
         res.statusMessage = "Missing field in body";
         return res.status(406).json({
             message: "Missing field in body",
