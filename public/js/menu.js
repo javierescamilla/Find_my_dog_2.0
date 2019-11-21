@@ -19,7 +19,7 @@ function changePage(){
 }
 
 function showFoundDogs(){
-	fetch('/blog-posts')
+	fetch('/found-dogs')
 		.then( response => {
 
 			if ( response.ok ){

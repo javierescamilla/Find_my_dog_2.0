@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get( '/blog-posts', ( req, res, next ) => {
+app.get( '/found-dogs', ( req, res, next ) => {
 	FoundDogList.get()
 		.then( foundDogs => {
 			return res.status( 200 ).json( foundDogs );
@@ -34,7 +34,7 @@ app.get( '/blog-posts', ( req, res, next ) => {
 		});
 });
 
-app.post('/blog-posts', jsonParser, (req, res, next) => {
+app.post('/found-dogs', jsonParser, (req, res, next) => {
     let title = req.body.title;
     let content = req.body.content;
     let author = req.body.author;
@@ -68,7 +68,7 @@ app.post('/blog-posts', jsonParser, (req, res, next) => {
         });
 });
 
-app.put('/blog-posts/:id', jsonParser, (req, res, next) => {
+app.put('/found-dogs/:id', jsonParser, (req, res, next) => {
     let filterID = req.params.id;
     if(!filterID || !req.body){
         res.statusMessage = "Missing field id";
@@ -90,7 +90,7 @@ app.put('/blog-posts/:id', jsonParser, (req, res, next) => {
        });
 });
 
-app.delete('/blog-posts/:id', (req, res) => {
+app.delete('/found-dogs/:id', (req, res) => {
     let filterID = req.params.id;
     console.log(filterID)
     if(!filterID){
