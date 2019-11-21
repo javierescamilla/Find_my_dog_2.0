@@ -29,7 +29,7 @@ function validateUser(userId, typedPassword){
 		})
 		.catch( err => {
             $('#userNameLogin').parent().prepend('<div>Wrong password or username. Try again.');
-            $('#userNameLogin').parent().child().css('color','red');
+            $('#userNameLogin').parent().find('div').css('color','red');
             console.log("Internal error")
 			console.log( err );
         });
