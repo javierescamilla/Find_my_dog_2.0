@@ -9,6 +9,8 @@ function getUser(userId){
 		})
 		.then( responseJSON => {  
             console.log(typeof(JSON.stringify(responseJSON)))
+            user = JSON.stringify(responseJSON)
+            console.log(user)
 		})
 		.catch( err => {
             console.log("Internal error")
