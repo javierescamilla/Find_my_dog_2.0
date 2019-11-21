@@ -86,7 +86,8 @@ app.get( '/seen-dogs/:id', ( req, res, next ) => {
 
 app.get( '/users/:id', ( req, res, next ) => {
     let user = req.params.id;
-    UserList.get({ id : user })
+    console.log(user)
+    UserList.get({ userName : user })
     .then( users => {
         return res.status( 200 ).json( users );
     })
