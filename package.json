@@ -5,6 +5,7 @@
   "main": "server-blog-javier.js",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1",
     "uuid4": "^1.1.4"

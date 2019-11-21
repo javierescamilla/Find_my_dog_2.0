@@ -18,9 +18,9 @@ let Uservar = mongoose.model('User', userSchema);
 
 let UserList = {
     get : function(){
-		return Uservar.find()
-				.then( blogs => {
-					return blogs;
+		return Uservar.findOne(filter)
+				.then( blog => {
+					return blog;
 				})
 				.catch( error => {
 					throw Error( error );

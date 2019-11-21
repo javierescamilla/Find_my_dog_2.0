@@ -1,4 +1,5 @@
 let express = require ('express');
+let session = require('express-session')
 let morgan = require ('morgan');
 let mongoose = require('mongoose');
 let uuid = require("uuid4");
@@ -81,6 +82,21 @@ app.get( '/seen-dogs/:id', ( req, res, next ) => {
     else{
         console.log('else');
     }
+});
+
+app.get( '/users/:id', ( req, res, next ) => {
+    let user = req.params.id;
+    UserList.get({ id : user })
+    .then( users => {
+        return res.status( 200 ).json( users );
+    })
+    .catch( error => {
+        res.statusMessage = "Something went wrong with the DB. Try again later.";
+        return res.status( 500 ).json({
+            status : 500,
+            message : "Something went wrong with the DB. Try again later."
+        })
+    });
 });
 
 app.post('/found-dogs', jsonParser, (req, res, next) => {
