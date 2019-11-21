@@ -104,6 +104,19 @@ main{
     flex-direction: column;
 }
 
+.filterForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterForm>#searchInputFilter{
+    width: 500px;
+    margin: 10px;
+    padding: 5px;
+}
+
 .dogPostFeed>div{
     display: flex;
     flex-direction: row;
