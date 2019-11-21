@@ -8,7 +8,7 @@ function getUser(userId){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {   
-            console.log(responseJSON)
+            return responseJSON.password;
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -16,4 +16,4 @@ function getUser(userId){
 		});
 }
 
-getUser('javierescamilla')
+console.log(getUser('javierescamilla'))
