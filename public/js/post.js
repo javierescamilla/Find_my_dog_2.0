@@ -220,6 +220,7 @@ var componentForm = {
 };
 
 function uploadPost(){
+    console.log("Entrando POST")
     $('#postDogForm').on('submit', function(event){
         event.preventDefault();
         let addr, infoData;
@@ -230,6 +231,7 @@ function uploadPost(){
             addr = $('#route').val();
         }
         if(option == 'lost'){
+            console.log("Entrando Lost")
             // data = {
             //     image: base64Img,
             //     name: $('#nameDogForm').val(),
