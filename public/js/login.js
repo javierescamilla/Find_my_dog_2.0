@@ -9,7 +9,7 @@ function getUser(userId){
 		})
 		.then( responseJSON => {
             console.log(responseJSON);   
-            return responseJSON
+            return JSON.stringify(responseJSON)
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -18,4 +18,4 @@ function getUser(userId){
 }
 
 let user = getUser('javierescamilla')
-console.log(user['password'])
+console.log(user.password)
