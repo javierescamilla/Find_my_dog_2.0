@@ -85,8 +85,8 @@ app.post('/lost-dogs', jsonParser, (req, res, next) => {
         state: state,
         country: country
      };
-     
-     FoundDogList.post(newBlog)
+
+     LostDogList.post(newBlog)
         .then(blog => {
             res.status(201).json(blog);
         })
