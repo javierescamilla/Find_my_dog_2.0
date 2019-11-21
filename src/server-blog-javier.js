@@ -8,6 +8,7 @@ let bodyParser = require( "body-parser" );
 let jsonParser = bodyParser.json();
 
 let {FoundDogList} = require('./found-dogs-model');
+let {LostDogList} = require('./lost-dogs-model');
 let {DATABASE_URL, PORT} = require('./config');
 mongoose.Promise = global.Promise;
 
@@ -34,13 +35,35 @@ app.get( '/found-dogs', ( req, res, next ) => {
 		});
 });
 
-app.post('/found-dogs', jsonParser, (req, res, next) => {
-    let title = req.body.title;
-    let content = req.body.content;
-    let author = req.body.author;
-    let publishDate = req.body.publishDate;
+app.get( '/lost-dogs', ( req, res, next ) => {
+	LostDogList.get()
+		.then( lostDogs => {
+			return res.status( 200 ).json( lostDogs );
+		})
+		.catch( error => {
+			res.statusMessage = "Something went wrong with the DB. Try again later.";
+			return res.status( 500 ).json({
+				status : 500,
+				message : "Something went wrong with the DB. Try again later."
+			})
+		});
+});
 
-    if(!title | !content | !author | !publishDate){
+app.post('/lost-dogs', jsonParser, (req, res, next) => {
+    let image = req.body.image;
+    let name = req.body.name;
+    let breed = req.body.breed;
+    let color = req.body.color;
+    let date = req.body.date;
+    let reward = req.body.reward;
+    let comments = req.body.comments;
+    let address = req.body.address;
+    let zipCode = req.body.zipCode;
+    let city = req.body.city;
+    let state = req.body.state;
+    let country = req.body.country;
+
+    if(!image){
         res.statusMessage = "Missing field in body";
         return res.status(406).json({
             message: "Missing field in body",
@@ -49,12 +72,20 @@ app.post('/found-dogs', jsonParser, (req, res, next) => {
     }
 
      let newBlog = {
-        id: uuid(),
-        title: title,
-        content: content,
-        author: author,
-        publishDate: publishDate
+        image: image,
+        name: name,
+        breed: breed,
+        color: color,
+        date: date,
+        reward: reward,
+        comments: comments,
+        address: address,
+        zipCode: zipCode,
+        city: city,
+        state: state,
+        country: country
      };
+     
      FoundDogList.post(newBlog)
         .then(blog => {
             res.status(201).json(blog);

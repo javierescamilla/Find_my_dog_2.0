@@ -1,7 +1,7 @@
-var placeSearch, autocomplete, option;
+var placeSearch, autocomplete, option, base64Img;
 
 var lostHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture'>
+                <input type='file' name='inputPicture' id='inputPicture' required>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
@@ -30,19 +30,19 @@ var lostHtml = `<p>Please fill the following form correctly. Spaces marked with 
                             <td><label for='timeOfInteraction'><h4>Date lost*</h4></label></td>
                         </tr>
                         <tr>
-                            <td><input type='text' id='timeOfInteraction' class='regInput' required></td>
+                            <td><input type='text' id='timeOfInteraction' class='regInput' placeholder="E.g. 10/20/2019 4:0:0" required></td>
                         </tr>
                         <tr>
-                            <td><label for='reward'><h4>Reward</h4></label></td>
+                            <td><label for='rewardDogForm'><h4>Reward</h4></label></td>
                         </tr>
                         <tr>
-                            <td><input type='text' id='reward' class='regInput' required></td>
+                            <td><input type='text' id='reward' class='regInput'></td>
                         </tr>
                         <tr>
                             <td><label for='commentsDogForm'><h4>Comments</h4></label></td>
                         </tr>
                         <tr>
-                            <td><textarea type='text' id = 'commentsDogForm' class='regInput' required></textarea></td>
+                            <td><textarea type='text' id = 'commentsDogForm' class='regInput'></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -79,7 +79,7 @@ var lostHtml = `<p>Please fill the following form correctly. Spaces marked with 
                 </div>`;
 
 var foundHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture'>
+                <input type='file' name='inputPicture' id='inputPicture' required>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
@@ -102,13 +102,13 @@ var foundHtml = `<p>Please fill the following form correctly. Spaces marked with
                             <td><label for='timeOfInteraction'><h4>Date found*</h4></label></td>
                         </tr>
                         <tr>
-                            <td><input type='text' id='timeOfInteraction' class='regInput' required></td>
+                            <td><input type='text' id='timeOfInteraction' class='regInput' placeholder="E.g. 10/20/2019 4:0:0" required></td>
                         </tr>
                         <tr>
                             <td><label for='commentsDogForm'><h4>Comments</h4></label></td>
                         </tr>
                         <tr>
-                            <td><textarea type='text' id = 'commentsDogForm' class='regInput' required></textarea></td>
+                            <td><textarea type='text' id = 'commentsDogForm' class='regInput'></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -145,7 +145,7 @@ var foundHtml = `<p>Please fill the following form correctly. Spaces marked with
                 </div>`;
 
 var seenHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture'>
+                <input type='file' name='inputPicture' id='inputPicture' required>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
@@ -168,13 +168,13 @@ var seenHtml = `<p>Please fill the following form correctly. Spaces marked with 
                             <td><label for='timeOfInteraction'><h4>Date seen*</h4></label></td>
                         </tr>
                         <tr>
-                            <td><input type='text' id='timeOfInteraction' class='regInput' required></td>
+                            <td><input type='text' id='timeOfInteraction' class='regInput' placeholder="E.g. 10/20/2019 4:0:0" required></td>
                         </tr>
                         <tr>
                             <td><label for='commentsDogForm'><h4>Comments</h4></label></td>
                         </tr>
                         <tr>
-                            <td><textarea type='text' id = 'commentsDogForm' class='regInput' required></textarea></td>
+                            <td><textarea type='text' id = 'commentsDogForm' class='regInput'></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -220,7 +220,137 @@ var componentForm = {
 };
 
 function uploadPost(){
-    
+    $('#postDogForm').on('submit', function(event){
+        event.preventDefault();
+        let addr, infoData;
+        if($('#street_number').val() != ''){
+            addr = $('#route').val() + ' ' + $('#street_number').val();  
+        }
+        else{
+            addr = $('#route').val();
+        }
+        if(option == 'lost'){
+            data = {
+                image: base64Img,
+                name: $('#nameDogForm').val(),
+                breed: $('#breedDogForm').val(),
+                color: $('#colorDogForm').val(),
+                date: new Date($('#timeOfInteraction').val()),
+                reward: $('#rewardDogForm').val(),
+                comments: $('#commentsDogForm').val(),
+                address: addr,
+                zipCode: $('#postal_code').val(),
+                city: $('#locality').val(),
+                state: $('#administrative_area_level_1').val(),
+                country: $('#country').val()
+            }
+            console.log(data)
+            fetch('/lost-dogs', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                window.location.replace("home.html")
+                return response.json();
+            })
+            /*$.ajax({
+                url: "urlLost",
+                data:{
+                    image: base64Img,
+                    name: $('#nameDogForm').val(),
+                    breed: $('#breedDogForm').val(),
+                    color: $('#colorDogForm').val(),
+                    date: new Date($('#timeOfInteraction').val()),
+                    reward: $('#rewardDogForm').val(),
+                    comments: $('#commentsDogForm').val(),
+                    address: addr,
+                    zipCode: $('#postal_code').val(),
+                    city: $('#locality').val(),
+                    state: $('#administrative_area_level_1').val(),
+                    country: $('#country').val()
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (responseJSON){
+                    window.location.replace("home.html");  
+                }
+              });*/
+        }
+        else if(option == 'found'){
+            /*$.ajax({
+                url: "urlFound",
+                data:{
+                    image: base64Img,
+                    breed: $('#breedDogForm').val(),
+                    color: $('#colorDogForm').val(),
+                    date: new Date($('#timeOfInteraction').val()),
+                    comments: $('#commentsDogForm').val(),
+                    address: addr,
+                    zipCode: $('#postal_code').val(),
+                    city: $('#locality').val(),
+                    state: $('#administrative_area_level_1').val(),
+                    country: $('#country').val()
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (responseJSON){
+                    window.location.replace("home.html");  
+                }
+              });*/
+              infoData={
+                image: base64Img,
+                breed: $('#breedDogForm').val(),
+                color: $('#colorDogForm').val(),
+                date: new Date($('#timeOfInteraction').val()),
+                comments: $('#commentsDogForm').val(),
+                address: addr,
+                zipCode: $('#postal_code').val(),
+                city: $('#locality').val(),
+                state: $('#administrative_area_level_1').val(),
+                country: $('#country').val()
+            };
+            console.log(infoData);
+        }
+        else if(option == 'seen'){
+            /*$.ajax({
+                url: "urlSeen",
+                data:{
+                    image: base64Img,
+                    breed: $('#breedDogForm').val(),
+                    color: $('#colorDogForm').val(),
+                    date: new Date($('#timeOfInteraction').val()),
+                    comments: $('#commentsDogForm').val(),
+                    address: addr,
+                    zipCode: $('#postal_code').val(),
+                    city: $('#locality').val(),
+                    state: $('#administrative_area_level_1').val(),
+                    country: $('#country').val()
+                },
+                method: "POST",
+                dataType: "json",
+                success: function (responseJSON){
+                    window.location.replace("home.html");  
+                }
+              });*/
+              infoData={
+                image: base64Img,
+                breed: $('#breedDogForm').val(),
+                color: $('#colorDogForm').val(),
+                date: new Date($('#timeOfInteraction').val()),
+                comments: $('#commentsDogForm').val(),
+                address: addr,
+                zipCode: $('#postal_code').val(),
+                city: $('#locality').val(),
+                state: $('#administrative_area_level_1').val(),
+                country: $('#country').val()
+            };
+            console.log(infoData);
+        }
+    });
 }
 
 function showFields(){
@@ -258,6 +388,7 @@ function uploadPicture(){
 
             reader.addEventListener('load', function(){
                 $('.imagePreviewPhoto').attr('src', this.result);
+                base64Img = this.result.split(',')[1];
             });
 
             reader.readAsDataURL(file);
@@ -317,3 +448,5 @@ function geolocate() {
 }
 
 showFields();
+
+uploadPost();
