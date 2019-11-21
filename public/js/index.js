@@ -15,7 +15,7 @@ function showLostDogs(){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {
-            //lengthLostDog = responseJSON.length;
+            lengthLostDog = responseJSON.length;
             $('#imagePreviewLost>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexLostDog].image);
             $('#imagePreviewLost>.imagePreviewText').css('display','none');
             $('#imagePreviewLost>.imagePreviewPhoto').css('display','block');  
@@ -47,7 +47,7 @@ function showFoundDogs(){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {   
-            //lengthFoundDog = responseJSON.length;
+            lengthFoundDog = responseJSON.length;
             $('#imagePreviewFound>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexFoundDog].image);
             $('#imagePreviewFound>.imagePreviewText').css('display','none');
             $('#imagePreviewFound>.imagePreviewPhoto').css('display','block');
@@ -76,7 +76,8 @@ function showSeenDogs(){
 			}
 			throw new Error ( response.statusText );
 		})
-		.then( responseJSON => {   
+		.then( responseJSON => {
+            lengthSeenDog = responseJSON.length;
             $('#imagePreviewSeen>.imagePreviewPhoto').attr('src','data:image/png;base64,'+ responseJSON[indexSeenDog].image);
             $('#imagePreviewSeen>.imagePreviewText').css('display','none');
             $('#imagePreviewSeen>.imagePreviewPhoto').css('display','block');
@@ -96,7 +97,7 @@ function showSeenDogs(){
 		});
 }
 
-/*function getNewPosts(){
+function getNewPosts(){
     $('#lostDogBack').on('reset', function(event){
         event.preventDefault();
         if(indexLostDog > 0){
@@ -106,13 +107,41 @@ function showSeenDogs(){
     });
     $('#lostDogNext').on('submit', function(event){
         event.preventDefault();
-        if(indexLostDog < ){
-            indexLostDog--;
+        if(indexLostDog < lengthLostDog){
+            indexLostDog++;
             showLostDogs();
         }
-    });*/
-
-
+    });
+    $('#foundDogBack').on('reset', function(event){
+        event.preventDefault();
+        if(indexFoundDog > 0){
+            indexFoundDog--;
+            showFoundDogs();
+        }
+    });
+    $('#foundDogNext').on('submit', function(event){
+        event.preventDefault();
+        if(indexFoundDog < lengthFoundDog){
+            indexFoundDog++;
+            showFoundDogs();
+        }
+    });
+    $('#seenDogBack').on('reset', function(event){
+        event.preventDefault();
+        if(indexSeenDog > 0){
+            indexSeenDog--;
+            showSeenDogs();
+        }
+    });
+    $('#seenDogNext').on('submit', function(event){
+        event.preventDefault();
+        if(indexSeenDog < lengthSeenDog){
+            indexSeenDog++;
+            showSeenDogs();
+        }
+    });
+}
 showLostDogs();
 showFoundDogs();
 showSeenDogs();
+getNewPosts();

@@ -22,8 +22,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get( '/found-dogs', ( req, res, next ) => {
-	FoundDogList.get()
+app.get( '/found-dogs/:id', ( req, res, next ) => {
+    let id = req.params.id;
+    if (!id){
+        FoundDogList.get()
 		.then( foundDogs => {
 			return res.status( 200 ).json( foundDogs );
 		})
@@ -34,10 +36,16 @@ app.get( '/found-dogs', ( req, res, next ) => {
 				message : "Something went wrong with the DB. Try again later."
 			})
 		});
+    }
+    else{
+        console.log('else');
+    }
 });
 
-app.get( '/lost-dogs', ( req, res, next ) => {
-	LostDogList.get()
+app.get( '/lost-dogs/:id', ( req, res, next ) => {
+    let id = req.params.id;
+    if(!id){
+        LostDogList.get()
 		.then( lostDogs => {
 			return res.status( 200 ).json( lostDogs );
 		})
@@ -48,10 +56,16 @@ app.get( '/lost-dogs', ( req, res, next ) => {
 				message : "Something went wrong with the DB. Try again later."
 			})
 		});
+    }
+    else{
+        console.log('else');
+    }
 });
 
-app.get( '/seen-dogs', ( req, res, next ) => {
-	SeenDogList.get()
+app.get( '/seen-dogs/:id', ( req, res, next ) => {
+    let id = req.params.id;
+    if(!id){
+        SeenDogList.get()
 		.then( seenDogs => {
 			return res.status( 200 ).json( seenDogs );
 		})
@@ -62,6 +76,10 @@ app.get( '/seen-dogs', ( req, res, next ) => {
 				message : "Something went wrong with the DB. Try again later."
 			})
 		});
+    }
+    else{
+        console.log('else');
+    }
 });
 
 app.post('/found-dogs', jsonParser, (req, res, next) => {

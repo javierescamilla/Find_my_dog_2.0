@@ -254,7 +254,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                //window.location.replace("../index.html")
+                window.location.replace("../index.html")
                 console.log(response.json())
                 return response.json();
             })
@@ -285,7 +285,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                //window.location.replace("../index.html")
+                window.location.replace("../index.html")
                 console.log(response.json())
                 return response.json();
             })
@@ -317,7 +317,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                //window.location.replace("../index.html")
+                window.location.replace("../index.html")
                 console.log(response.json())
                 return response.json();
             })
