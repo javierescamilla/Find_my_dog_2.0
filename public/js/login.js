@@ -42,7 +42,9 @@ function validateUser(userId, typedPassword){
             console.log(user.password)
             if(user.password == typedPassword){
                 username = user.username;
-                window.location.href = "../index.html?usr="+username;
+                console.log(username);
+                qString = "../index.html?usr="+username;
+                window.location.href = qString;
             }
             else{
                 $('#errorMessageLogin').html('');
