@@ -17,7 +17,8 @@ function validateUser(userId, typedPassword){
 		.then( responseJSON => {  
             //console.log(typeof(JSON.stringify(responseJSON)))
             console.log("Response Ok")
-            user = JSON.stringify(responseJSON)
+            user = responseJSON
+            console.log(user.password)
             if(user.password == typedPassword){
                 console.log('Correct password')
             }
