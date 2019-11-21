@@ -8,7 +8,7 @@ function getUser(userId){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {   
-            return responseJSON.password;
+            return str(responseJSON.password);
 		})
 		.catch( err => {
             console.log("Internal error")
