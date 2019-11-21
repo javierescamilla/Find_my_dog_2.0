@@ -254,7 +254,7 @@ function uploadPost(){
                 body: JSON.stringify(data)
             })
             .then(function(response) {
-                window.location.replace("home.html")
+                window.location.replace("../index.html")
                 return response.json();
             })
             /*$.ajax({
