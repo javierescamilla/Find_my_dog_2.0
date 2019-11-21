@@ -102,32 +102,40 @@ function showSeenDogs(){
 
 function getNewPosts(){
     $('#lostDogBack').on('reset', function(event){
+        console.log('lostDogBack')
         event.preventDefault();
         if(indexLostDog > 0){
             indexLostDog--;
             showLostDogs();
         }
+        console.log(indexLostDog)
     });
     $('#lostDogNext').on('submit', function(event){
+        console.log('lostDogNext')
         event.preventDefault();
         if(indexLostDog < lengthLostDog){
             indexLostDog++;
             showLostDogs();
         }
+        console.log(indexLostDog)
     });
     $('#foundDogBack').on('reset', function(event){
+        console.log('foundDogBack')
         event.preventDefault();
         if(indexFoundDog > 0){
             indexFoundDog--;
             showFoundDogs();
         }
+        console.log(indexFoundDog)
     });
     $('#foundDogNext').on('submit', function(event){
+        console.log('foundDogNext')
         event.preventDefault();
         if(indexFoundDog < lengthFoundDog){
             indexFoundDog++;
             showFoundDogs();
         }
+        console.log(indexFoundDog)
     });
     $('#seenDogBack').on('reset', function(event){
         event.preventDefault();
