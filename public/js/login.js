@@ -41,7 +41,7 @@ function validateUser(userId, typedPassword){
             user = responseJSON
             console.log(user.password)
             if(user.password == typedPassword){
-                username = user.name;
+                username = user.username;
                 window.location.href = "../index.html?usr="+username;
             }
             else{
