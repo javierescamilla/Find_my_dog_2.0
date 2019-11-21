@@ -15,8 +15,8 @@ function getUser(userId){
 		.catch( err => {
             console.log("Internal error")
 			console.log( err );
-		});
+        });
+    console.log(user)
 }
 
 getUser('javierescamilla')
-console.log(user)
