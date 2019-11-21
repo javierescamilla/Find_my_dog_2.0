@@ -1,7 +1,7 @@
 var placeSearch, autocomplete, option, base64Img;
 
 var lostHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture' required>
+                <input type='file' name='inputPicture' id='inputPicture'>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
@@ -79,7 +79,7 @@ var lostHtml = `<p>Please fill the following form correctly. Spaces marked with 
                 </div>`;
 
 var foundHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture' required>
+                <input type='file' name='inputPicture' id='inputPicture'>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
@@ -145,7 +145,7 @@ var foundHtml = `<p>Please fill the following form correctly. Spaces marked with
                 </div>`;
 
 var seenHtml = `<p>Please fill the following form correctly. Spaces marked with * are obligatory</p>
-                <input type='file' name='inputPicture' id='inputPicture' required>
+                <input type='file' name='inputPicture' id='inputPicture'>
                 <div class='imagePreview' id='imagePreview'>
                     <span class='imagePreviewText'>Image Preview</span>
                     <img src='' alt='Image preview' class='imagePreviewPhoto'>
