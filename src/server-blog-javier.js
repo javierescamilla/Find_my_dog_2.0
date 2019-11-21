@@ -7,7 +7,7 @@ let app = express();
 let bodyParser = require( "body-parser" );
 let jsonParser = bodyParser.json();
 
-let {BlogList} = require('./blog-post-model');
+let {FoundDogList} = require('./blog-post-model');
 let {DATABASE_URL, PORT} = require('./config');
 mongoose.Promise = global.Promise;
 
@@ -21,7 +21,7 @@ app.use(function(req, res, next) {
 });
 
 app.get( '/blog-posts', ( req, res, next ) => {
-	BlogList.get()
+	FoundDogList.get()
 		.then( foundDogs => {
 			return res.status( 200 ).json( foundDogs );
 		})
@@ -55,7 +55,7 @@ app.post('/blog-posts', jsonParser, (req, res, next) => {
         author: author,
         publishDate: publishDate
      };
-     BlogList.post(newBlog)
+     FoundDogList.post(newBlog)
         .then(blog => {
             res.status(201).json(blog);
         })
@@ -77,7 +77,7 @@ app.put('/blog-posts/:id', jsonParser, (req, res, next) => {
            "status" : 406
        });
     }
-    BlogList.put({ id : filterID }, req.body)
+    FoundDogList.put({ id : filterID }, req.body)
        .then(blog => {
            res.status(201).json(blog);
        })
@@ -100,7 +100,7 @@ app.delete('/blog-posts/:id', (req, res) => {
            "status" : 406
        });
     }
-    BlogList.delete({ id : filterID })
+    FoundDogList.delete({ id : filterID })
        .then(blog => {
            res.status(201).json(blog);
        })
