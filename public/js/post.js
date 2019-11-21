@@ -231,8 +231,6 @@ function uploadPost(){
             addr = $('#route').val();
         }
         if(option == 'lost'){
-            console.log("Entrando Lost");
-            console.log(base64Img)
             data = {
                 image: base64Img,
                 name: $('#nameDogForm').val(),
@@ -247,20 +245,6 @@ function uploadPost(){
                 state: $('#administrative_area_level_1').val(),
                 country: $('#country').val()
             }
-            // data = {
-            //     image: "String",
-            //     name: "String",
-            //     breed: "String",
-            //     color: "String",
-            //     date: "String",
-            //     reward: "String",
-            //     comments: "String",
-            //     address: "String",
-            //     zipCode: "String",
-            //     city: "String",
-            //     state: "String",
-            //     country: "String"
-            // }
             fetch('/lost-dogs', {
                 headers: {
                     'Accept': 'application/json',
@@ -278,51 +262,9 @@ function uploadPost(){
                 console.log("Internal error")
                 console.log( err );
             });
-            /*$.ajax({
-                url: "urlLost",
-                data:{
-                    image: base64Img,
-                    name: $('#nameDogForm').val(),
-                    breed: $('#breedDogForm').val(),
-                    color: $('#colorDogForm').val(),
-                    date: new Date($('#timeOfInteraction').val()),
-                    reward: $('#rewardDogForm').val(),
-                    comments: $('#commentsDogForm').val(),
-                    address: addr,
-                    zipCode: $('#postal_code').val(),
-                    city: $('#locality').val(),
-                    state: $('#administrative_area_level_1').val(),
-                    country: $('#country').val()
-                },
-                method: "POST",
-                dataType: "json",
-                success: function (responseJSON){
-                    window.location.replace("home.html");  
-                }
-              });*/
         }
         else if(option == 'found'){
-            /*$.ajax({
-                url: "urlFound",
-                data:{
-                    image: base64Img,
-                    breed: $('#breedDogForm').val(),
-                    color: $('#colorDogForm').val(),
-                    date: new Date($('#timeOfInteraction').val()),
-                    comments: $('#commentsDogForm').val(),
-                    address: addr,
-                    zipCode: $('#postal_code').val(),
-                    city: $('#locality').val(),
-                    state: $('#administrative_area_level_1').val(),
-                    country: $('#country').val()
-                },
-                method: "POST",
-                dataType: "json",
-                success: function (responseJSON){
-                    window.location.replace("home.html");  
-                }
-              });*/
-              infoData={
+            data={
                 image: base64Img,
                 breed: $('#breedDogForm').val(),
                 color: $('#colorDogForm').val(),
@@ -334,30 +276,27 @@ function uploadPost(){
                 state: $('#administrative_area_level_1').val(),
                 country: $('#country').val()
             };
-            console.log(infoData);
+            fetch('/found-dogs', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                //window.location.replace("../index.html")
+                console.log(response.json())
+                return response.json();
+            })
+            .catch( err => {
+                console.log("Internal error")
+                console.log( err );
+            });
+
         }
         else if(option == 'seen'){
-            /*$.ajax({
-                url: "urlSeen",
-                data:{
-                    image: base64Img,
-                    breed: $('#breedDogForm').val(),
-                    color: $('#colorDogForm').val(),
-                    date: new Date($('#timeOfInteraction').val()),
-                    comments: $('#commentsDogForm').val(),
-                    address: addr,
-                    zipCode: $('#postal_code').val(),
-                    city: $('#locality').val(),
-                    state: $('#administrative_area_level_1').val(),
-                    country: $('#country').val()
-                },
-                method: "POST",
-                dataType: "json",
-                success: function (responseJSON){
-                    window.location.replace("home.html");  
-                }
-              });*/
-              infoData={
+              data={
                 image: base64Img,
                 breed: $('#breedDogForm').val(),
                 color: $('#colorDogForm').val(),
@@ -369,7 +308,23 @@ function uploadPost(){
                 state: $('#administrative_area_level_1').val(),
                 country: $('#country').val()
             };
-            console.log(infoData);
+            fetch('/seen-dogs', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+            })
+            .then(function(response) {
+                //window.location.replace("../index.html")
+                console.log(response.json())
+                return response.json();
+            })
+            .catch( err => {
+                console.log("Internal error")
+                console.log( err );
+            });
         }
     });
 }

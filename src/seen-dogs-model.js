@@ -2,12 +2,16 @@ let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 let seenDogSchema = mongoose.Schema({
-    name : {type : String, required : true},
+    image : {type : String},
     breed : {type : String},
-    picture : {type : String},
-    lastSeen : {type : String},
-    reward : {type : String},
-    comments : {type : String}
+    color : {type : String},
+    date : {type : String},
+    comments : {type : String},
+    address : {type : String},
+    zipCode : {type : String},
+    city : {type : String},
+    state : {type : String},
+    country : {type : String}
 });
 
 let SeenDog = mongoose.model('Seen-dog', seenDogSchema);

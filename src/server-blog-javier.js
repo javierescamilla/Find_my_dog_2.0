@@ -9,6 +9,7 @@ let jsonParser = bodyParser.json();
 
 let {FoundDogList} = require('./found-dogs-model');
 let {LostDogList} = require('./lost-dogs-model');
+let {SeenDogList} = require('./seen-dogs-model');
 let {DATABASE_URL, PORT} = require('./config');
 mongoose.Promise = global.Promise;
 
@@ -49,6 +50,67 @@ app.get( '/lost-dogs', ( req, res, next ) => {
 		});
 });
 
+app.get( '/seen-dogs', ( req, res, next ) => {
+	SeenDogList.get()
+		.then( seenDogs => {
+			return res.status( 200 ).json( seenDogs );
+		})
+		.catch( error => {
+			res.statusMessage = "Something went wrong with the DB. Try again later.";
+			return res.status( 500 ).json({
+				status : 500,
+				message : "Something went wrong with the DB. Try again later."
+			})
+		});
+});
+
+app.post('/found-dogs', jsonParser, (req, res, next) => {
+    let image = req.body.image;
+    let breed = req.body.breed;
+    let color = req.body.color;
+    let date = req.body.date;
+    let comments = req.body.comments;
+    let address = req.body.address;
+    let zipCode = req.body.zipCode;
+    let city = req.body.city;
+    let state = req.body.state;
+    let country = req.body.country;
+
+    if(!image){
+        res.statusMessage = "Missing field in body";
+        return res.status(406).json({
+            message: "Missing field in body",
+            status: 406
+        });
+    }
+
+     let newBlog = {
+        image: image,
+        breed: breed,
+        color: color,
+        date: date,
+        reward: reward,
+        comments: comments,
+        address: address,
+        zipCode: zipCode,
+        city: city,
+        state: state,
+        country: country
+     };
+
+     FoundDogList.post(newBlog)
+        .then(blog => {
+            res.status(201).json(blog);
+        })
+        .catch(err => {
+            res.statusMessage = "Something went wrong with the data base";
+            return res.status(500).json({
+                "error" : "Something went wrong with the data base",
+                "status" : 500
+            });
+        });
+});
+
 app.post('/lost-dogs', jsonParser, (req, res, next) => {
     let image = req.body.image;
     let name = req.body.name;
@@ -87,6 +149,53 @@ app.post('/lost-dogs', jsonParser, (req, res, next) => {
      };
 
      LostDogList.post(newBlog)
+        .then(blog => {
+            res.status(201).json(blog);
+        })
+        .catch(err => {
+            res.statusMessage = "Something went wrong with the data base";
+            return res.status(500).json({
+                "error" : "Something went wrong with the data base",
+                "status" : 500
+            });
+        });
+});
+
+app.post('/seen-dogs', jsonParser, (req, res, next) => {
+    let image = req.body.image;
+    let breed = req.body.breed;
+    let color = req.body.color;
+    let date = req.body.date;
+    let comments = req.body.comments;
+    let address = req.body.address;
+    let zipCode = req.body.zipCode;
+    let city = req.body.city;
+    let state = req.body.state;
+    let country = req.body.country;
+
+    if(!image){
+        res.statusMessage = "Missing field in body";
+        return res.status(406).json({
+            message: "Missing field in body",
+            status: 406
+        });
+    }
+
+     let newBlog = {
+        image: image,
+        breed: breed,
+        color: color,
+        date: date,
+        reward: reward,
+        comments: comments,
+        address: address,
+        zipCode: zipCode,
+        city: city,
+        state: state,
+        country: country
+     };
+
+     SeenDogList.post(newBlog)
         .then(blog => {
             res.status(201).json(blog);
         })

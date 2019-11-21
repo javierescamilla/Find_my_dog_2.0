@@ -12,10 +12,10 @@ function showFoundDogs(){
 			for ( let i = 0; i < responseJSON.length; i ++ ){
 				$('.Found_dogs_section').find('ul')
                     .append(`<b>${responseJSON[i].breed}</b>
-                             <b>${responseJSON[i].picture}</b>
                              <b>${responseJSON[i].color}</b>
-                             <b>${responseJSON[i].foundOn}</b>
-                             <b>${responseJSON[i].comments}</b>`)
+                             <b>${responseJSON[i].date}</b>
+                             <b>${responseJSON[i].comments}</b>
+                             <b>${responseJSON[i].address}</b>`)
 			}
 		})
 		.catch( err => {
@@ -37,11 +37,37 @@ function showLostDogs(){
 			console.log(responseJSON)       
 			for ( let i = 0; i < responseJSON.length; i ++ ){
 				$('.Lost_dog_section').find('ul')
-                    .append(`<b>${responseJSON[i].breed}</b>
-                             <b>${responseJSON[i].picture}</b>
+                    .append(`<b>${responseJSON[i].name}</b>
+                             <b>${responseJSON[i].breed}</b>
                              <b>${responseJSON[i].color}</b>
-                             <b>${responseJSON[i].foundOn}</b>
-                             <b>${responseJSON[i].comments}</b>`)
+                             <b>${responseJSON[i].date}</b>
+                             <b>${responseJSON[i].reward}</b>`)
+			}
+		})
+		.catch( err => {
+            console.log("Internal error")
+			console.log( err );
+		});
+}
+
+function showSeenDogs(){
+	fetch('/seen-dogs')
+		.then( response => {
+
+			if ( response.ok ){
+                return response.json();
+			}
+			throw new Error ( response.statusText );
+		})
+		.then( responseJSON => {   
+			console.log(responseJSON)       
+			for ( let i = 0; i < responseJSON.length; i ++ ){
+				$('.Seen_dog_section').find('ul')
+                    .append(`<b>${responseJSON[i].name}</b>
+                             <b>${responseJSON[i].breed}</b>
+                             <b>${responseJSON[i].color}</b>
+                             <b>${responseJSON[i].date}</b>
+                             <b>${responseJSON[i].reward}</b>`)
 			}
 		})
 		.catch( err => {
@@ -52,3 +78,4 @@ function showLostDogs(){
 
 showFoundDogs();
 showLostDogs();
+showSeenDogs();
