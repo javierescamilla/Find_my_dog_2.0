@@ -1,10 +1,12 @@
 function initSesion(){
     $('#loginForm').on('submit', function(event){
+        console.log("Click button")
         event.preventDefault();
         validateUser($('#userNameLogin').val(),$('#passwordLogin').val());
     });
 }
 function validateUser(userId, typedPassword){
+    console.log("Validate user")
     fetch('/users/' + userId)
 		.then( response => {
 			if ( response.ok ){
@@ -14,6 +16,7 @@ function validateUser(userId, typedPassword){
 		})
 		.then( responseJSON => {  
             //console.log(typeof(JSON.stringify(responseJSON)))
+            console.log("Response Ok")
             user = JSON.stringify(responseJSON)
             if(user.password == typedPassword){
                 console.log('Correct password')
