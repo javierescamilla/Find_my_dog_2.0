@@ -8,7 +8,7 @@ function getUser(userId){
 			throw new Error ( response.statusText );
 		})
 		.then( responseJSON => {  
-            user = responseJSON.json()
+            console.log(responseJSON)
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -17,4 +17,3 @@ function getUser(userId){
 }
 
 getUser('javierescamilla')
-console.log(user)
