@@ -1,4 +1,3 @@
-let usrPassword = ''
 function getUser(userId){
 	fetch('/users/' + userId)
 		.then( response => {
@@ -10,7 +9,7 @@ function getUser(userId){
 		})
 		.then( responseJSON => {
             console.log(responseJSON);   
-            usrPassword = responseJSON.password;
+            return responseJSON
 		})
 		.catch( err => {
             console.log("Internal error")
@@ -18,5 +17,5 @@ function getUser(userId){
 		});
 }
 
-getUser('javierescamilla')
-console.log(usrPassword)
+let user = getUser('javierescamilla')
+console.log(user)
