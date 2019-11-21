@@ -77,6 +77,23 @@ function createNewUser(){
             state: $('#administrative_area_level_1').val(),
             country: $('#country').val()
           };
+
+          fetch('/users', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+          })
+          .then(function(response) {
+            console.log(response.json())
+            return response.json();
+          })
+          .catch( err => {
+            console.log("Internal error")
+            console.log( err );
+          });
           console.log(data);
           window.location.replace("index.html");
         }

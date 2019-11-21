@@ -10,6 +10,7 @@ let jsonParser = bodyParser.json();
 let {FoundDogList} = require('./found-dogs-model');
 let {LostDogList} = require('./lost-dogs-model');
 let {SeenDogList} = require('./seen-dogs-model');
+let {UserList} = require('./users-model');
 let {DATABASE_URL, PORT} = require('./config');
 mongoose.Promise = global.Promise;
 
@@ -212,6 +213,44 @@ app.post('/seen-dogs', jsonParser, (req, res, next) => {
      };
 
      SeenDogList.post(newBlog)
+        .then(blog => {
+            res.status(201).json(blog);
+        })
+        .catch(err => {
+            res.statusMessage = "Something went wrong with the data base";
+            return res.status(500).json({
+                "error" : "Something went wrong with the data base",
+                "status" : 500
+            });
+        });
+});
+
+app.post('/users', jsonParser, (req, res, next) => {
+    let userName = req.body.userName;
+    let firstName = req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let password = req.body.password;
+    let address = req.body.address;
+    let zipCode = req.body.zipCode;
+    let city = req.body.city;
+    let state = req.body.state;
+    let country = req.body.country;
+
+     let newBlog = {
+        userName: userName,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        address: address,
+        zipCode: zipCode,
+        city: city,
+        state: state,
+        country: country
+     };
+
+     UserList.post(newBlog)
         .then(blog => {
             res.status(201).json(blog);
         })
