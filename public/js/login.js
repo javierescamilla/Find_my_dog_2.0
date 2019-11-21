@@ -1,5 +1,5 @@
 let user;
-function getUser(userId){
+function validateUser(userId, typedPassword){
     fetch('/users/' + userId)
 		.then( response => {
 			if ( response.ok ){
@@ -10,13 +10,14 @@ function getUser(userId){
 		.then( responseJSON => {  
             console.log(typeof(JSON.stringify(responseJSON)))
             user = JSON.stringify(responseJSON)
-            //console.log(user)
+            if(user.password == typedPassword){
+                console.log('Correct password')
+            }
 		})
 		.catch( err => {
             console.log("Internal error")
 			console.log( err );
         });
-    console.log(user)
 }
 
-getUser('javierescamilla')
+validateUser('javierescamilla', 'Arduino.1997')
